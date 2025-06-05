@@ -1,0 +1,18 @@
+name: 'compile'
+on:
+  push:         {branches: ['compile']}
+  pull_request: {}
+
+jobs:
+  compile:
+    name:    'build (linux)'
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: 'actions/checkout@v4'
+      - name: 'build (linux)'
+        run: |
+          go build -ldflags "-s -w" ./cmd/goatcounter/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: goatcounter-linux
+          path: goatcounter
