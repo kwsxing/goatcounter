@@ -1,5 +1,7 @@
 name: 'test'
-on:   ['push', 'pull_request']
+on:
+  push:         {branches: ['compile']}
+  pull_request: {}
 
 jobs:
   # Uncomment to get a debug shell.
